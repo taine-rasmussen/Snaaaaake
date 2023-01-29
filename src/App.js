@@ -26,10 +26,22 @@ function App() {
   };
 
   const gameLoop = () => {
+    const snakeCopy = JSON.parse(JSON.stringify(snake));
+    const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
+    console.log('before:', newSnakeHead, snake);
+    snakeCopy.unshift();
+    console.log('after:', newSnakeHead, snake);
+    snakeCopy.pop();
+    setSnake(snakeCopy);
+    // Create copy of snake.
+    // Update snakeHead by adding current directions to it
+    // Add newHead to snake
+    // update state with new snake
   };
 
   useEffect(
     () => {
+      gameLoop()
       console.log(canvasRef)
       const context = canvasRef.current.getContext("2d")
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);

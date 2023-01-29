@@ -25,6 +25,11 @@ function App() {
     setGameOver(false);
   };
 
+  const moveSnake = ({ keyCode, key }) => {
+    keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
+    console.log(key)
+  }
+
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake));
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
@@ -37,7 +42,6 @@ function App() {
 
   useEffect(
     () => {
-      gameLoop()
       console.log(canvasRef)
       const context = canvasRef.current.getContext("2d")
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);

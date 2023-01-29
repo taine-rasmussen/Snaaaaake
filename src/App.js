@@ -17,7 +17,13 @@ function App() {
   const [speed, setSpeed] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
-
+  const startGame = () => {
+    setSnake(SNAKE_START);
+    setApple(APPLE_START);
+    setDir([0, -1]);
+    setSpeed(SPEED);
+    setGameOver(false);
+  };
 
 
 

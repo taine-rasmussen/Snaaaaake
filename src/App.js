@@ -1,9 +1,11 @@
 import './App.css';
 import { 
   CANVAS_SIZE,
-  SPEED,
   SNAKE_START,
-  FRUIT_START 
+  FRUIT_START,
+  DIRECTIONS,
+  SCALE,
+  SPEED
 } from './Constants'
 
 function App() {

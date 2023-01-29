@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useInterval } from './useInterval'
 import { 
   CANVAS_SIZE,
   SNAKE_START,
@@ -25,9 +26,8 @@ function App() {
     setGameOver(false);
   };
 
-  const moveSnake = ({ keyCode, key }) => {
+  const moveSnake = ({ keyCode }) => {
     keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
-    console.log(key)
   }
 
   const gameLoop = () => {
@@ -56,6 +56,8 @@ function App() {
     },
     [snake, fruit, gameOver]
   )
+
+  useInterval(() => gameLoop, speed)
 
   return (
     <div 

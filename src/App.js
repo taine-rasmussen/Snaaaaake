@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { 
   CANVAS_SIZE,
   SNAKE_START,
@@ -19,25 +19,22 @@ function App() {
 
   const startGame = () => {
     setSnake(SNAKE_START);
-    setApple(APPLE_START);
+    setFruit(FRUIT_START);
     setDir([0, -1]);
     setSpeed(SPEED);
     setGameOver(false);
   };
 
-
-
-
-
-
   const gameLoop = () => {
-
+    const context = canvasRef.current.getContext("2d")
+    context.fillRect(83, 84, 20, 20)
+    console.log(context)
   };
 
   useEffect(
     () => {
-
       console.log(canvasRef)
+      gameLoop()
     },
     []
   )

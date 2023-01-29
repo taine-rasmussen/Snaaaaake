@@ -17,8 +17,6 @@ function App() {
   const [speed, setSpeed] = useState(null);
   const [gameOver, setGameOver] = useState(false);
 
-  const canvasRef = useRef()
-
   const startGame = () => {
     setSnake(SNAKE_START);
     setApple(APPLE_START);
@@ -39,7 +37,7 @@ function App() {
   useEffect(
     () => {
 
-
+      console.log(canvasRef)
     },
     []
   )

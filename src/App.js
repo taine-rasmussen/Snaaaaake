@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useInterval } from './useInterval'
+import { useInterval } from "./useInterval";
 import { 
   CANVAS_SIZE,
   SNAKE_START,
@@ -33,16 +33,15 @@ function App() {
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake));
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
-    console.log('before:', newSnakeHead, snake);
-    snakeCopy.unshift();
-    console.log('after:', newSnakeHead, snake);
+    snakeCopy.unshift(newSnakeHead);
     snakeCopy.pop();
     setSnake(snakeCopy);
   };
 
+  useInterval(() => gameLoop(), speed);
+
   useEffect(
     () => {
-      console.log(canvasRef)
       const context = canvasRef.current.getContext("2d")
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
       //Clears whole canvas
@@ -55,9 +54,9 @@ function App() {
       context.fillRect(fruit[0], fruit[1], 1, 1);
     },
     [snake, fruit, gameOver]
-  )
+  );
 
-  useInterval(() => gameLoop, speed)
+  console.log(snake)
 
   return (
     <div 

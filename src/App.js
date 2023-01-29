@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import { 
   CANVAS_SIZE,
   SNAKE_START,
@@ -16,6 +16,8 @@ function App() {
   const [dir, setDir] = useState([0, -1]);
   const [speed, setSpeed] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+
+  const canvasRef = useRef()
 
   const startGame = () => {
     setSnake(SNAKE_START);
@@ -37,6 +39,7 @@ function App() {
   useEffect(
     () => {
 
+
     },
     []
   )
@@ -51,12 +54,14 @@ function App() {
         style={{ border: "1px solid black" }}
         width={`${CANVAS_SIZE[0]}px`}
         height={`${CANVAS_SIZE[1]}px`}
+        ref={canvasRef}
       />
       <button
         onClick={startGame}
       >
         Start game
       </button>
+      {gameOver && <div>Game Over</div>}
     </div>
   );
 }

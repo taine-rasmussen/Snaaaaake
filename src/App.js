@@ -33,10 +33,6 @@ function App() {
     console.log('after:', newSnakeHead, snake);
     snakeCopy.pop();
     setSnake(snakeCopy);
-    // Create copy of snake.
-    // Update snakeHead by adding current directions to it
-    // Add newHead to snake
-    // update state with new snake
   };
 
   useEffect(
@@ -62,6 +58,7 @@ function App() {
       className="app_container"
       role="button"
       tabIndex="0"
+      onKeyDown={e => moveSnake(e)}
     >
       <canvas
         style={{ border: "1px solid black" }}

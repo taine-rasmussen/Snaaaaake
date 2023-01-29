@@ -27,8 +27,12 @@ function App() {
 
   const gameLoop = () => {
     const context = canvasRef.current.getContext("2d")
-    context.fillRect(83, 84, 20, 20)
-    console.log(context)
+    context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
+    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    context.fillStyle = "pink";
+    snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
+    context.fillStyle = "lightblue";
+    context.fillRect(fruit[0], fruit[1], 1, 1);
   };
 
   useEffect(

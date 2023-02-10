@@ -25,7 +25,7 @@ const Settings = (props) => {
 
   return (
     <div className='settings_container'>
-        <h1>Setttings</h1>
+        <h1>Settings</h1>
         <div className='speed_container'>
             <h4>Speed: {newSpeed ? newSpeed : 125}</h4>
             <div className='speed_controls'>

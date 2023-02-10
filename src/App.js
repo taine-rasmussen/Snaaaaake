@@ -19,6 +19,7 @@ function App() {
   const [fruit, setFruit] = useState(FRUIT_START);
   const [dir, setDir] = useState([0, -1]);
   const [speed, setSpeed] = useState(null);
+  const [newSpeed, setNewSpeed] = useState(125)
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState({curr: 0, prev: 0, high: 0})
 
@@ -26,7 +27,7 @@ function App() {
     setSnake(SNAKE_START);
     setFruit(FRUIT_START);
     setDir([0, -1]);
-    setSpeed(SPEED);
+    setSpeed(newSpeed);
     setGameOver(false);
   };
 
@@ -110,7 +111,11 @@ function App() {
       tabIndex="0"
       onKeyDown={e => moveSnake(e)}
     >
-      <Settings />
+      <Settings
+        speed={speed}
+        newSpeed={newSpeed}
+        setNewSpeed={setNewSpeed}
+      />
       <div className='game_container'>
         <canvas
           className='gameboard'
@@ -121,7 +126,7 @@ function App() {
         <button
           onClick={startGame}
         >
-          Start game
+          {gameOver ? 'Try Again...' : 'Start game'}
         </button>
       </div>
       <Score

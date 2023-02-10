@@ -5,13 +5,13 @@ import {
   SNAKE_START,
   FRUIT_START,
   DIRECTIONS,
-  SCALE,
-  SPEED
+  SCALE
 } from './Constants'
 import './App.css';
 
 import Score from './Score/Score'
 import Settings from './Settings/Settings'
+import Gameboard from './Gameboard/Gameboard'
 
 function App() {
   const canvasRef = useRef();
@@ -119,19 +119,12 @@ function App() {
         setSnakeColour={setSnakeColour}
         setFruitColour={setFruitColour}
       />
-      <div className='game_container'>
-        <canvas
-          className='gameboard'
-          width={`${CANVAS_SIZE[0]}px`}
-          height={`${CANVAS_SIZE[1]}px`}
-          ref={canvasRef}
-        />
-        <button
-          onClick={startGame}
-        >
-          {gameOver ? 'Try Again...' : 'Start game'}
-        </button>
-      </div>
+      <Gameboard 
+        startGame={startGame}
+        gameOver={gameOver}
+        canvasSize={CANVAS_SIZE}
+        canvasRef={canvasRef}
+      />
       <Score
         score={score}
       />

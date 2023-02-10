@@ -1,5 +1,4 @@
 const CANVAS_SIZE = [800, 800];
-const SPEED = 125;
 const SNAKE_START = [[8, 7], [8, 8]]
 const FRUIT_START = [8, 3]
 const SCALE = 40;
@@ -15,6 +14,5 @@ export {
   SNAKE_START,
   FRUIT_START,
   DIRECTIONS,
-  SCALE,
-  SPEED
+  SCALE
 };

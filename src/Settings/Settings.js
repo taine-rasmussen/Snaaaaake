@@ -29,8 +29,8 @@ const Settings = (props) => {
         <div className='speed_container'>
             <h4>Speed: {newSpeed ? newSpeed : 125}</h4>
             <div className='speed_controls'>
-              <button onClick={increaseSpeed}>+</button>
-              <button onClick={decreaseSpeed}>-</button>
+              <button onClick={increaseSpeed}>Slower</button>
+              <button onClick={decreaseSpeed}>Faster</button>
             </div>
         </div>
         <div 

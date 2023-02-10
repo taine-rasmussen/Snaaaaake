@@ -45,9 +45,7 @@ function App() {
   }
 
   const checkFruitCollision = () => {
-    const fruitPos = fruit.toString()
-    const snakePos = snake[0].toString()
-    if(snakePos == fruitPos){ 
+    if (snake[0][0] == fruit[0] && snake[0][1] == fruit[1]){
       const snakeCopy = JSON.parse(JSON.stringify(snake));
       const newSnakeTail = [snakeCopy[snake.length - 1][0], snakeCopy[snake.length - 1][1] + 1]
       snakeCopy.push(newSnakeTail)
@@ -93,7 +91,6 @@ function App() {
       snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
       context.fillStyle = "lightblue";
       context.fillRect(fruit[0], fruit[1], 1, 1);
-      console.log(snake)
     },
     [snake, fruit, gameOver]
   );

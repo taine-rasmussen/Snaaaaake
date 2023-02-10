@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useInterval } from "./useInterval";
 import { 
   CANVAS_SIZE,
@@ -56,11 +56,23 @@ function App() {
     }
   };
 
+  const checkOutOfBounds = (head) => {
+    if(
+      head[0] * SCALE >= CANVAS_SIZE[0] ||
+      head[0] < 0 ||
+      head[1] * SCALE >= CANVAS_SIZE[1] ||
+      head[1] < 0
+    ) return console.log('outof bounds!')
+
+  }
+
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake));
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
     snakeCopy.unshift(newSnakeHead);
     snakeCopy.pop();
+    checkFruitCollision()
+    checkOutOfBounds(newSnakeHead)
     setSnake(snakeCopy);
   };
 
@@ -72,7 +84,6 @@ function App() {
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
       //Clears whole canvas
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      checkFruitCollision()
       // Sets given cell colour to pink for n length of snake
       context.fillStyle = "pink";
       snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));

@@ -10,6 +10,9 @@ import {
 } from './Constants'
 import './App.css';
 
+import Score from './Score'
+import Settings from './Settings'
+
 function App() {
   const canvasRef = useRef();
   const [snake, setSnake] = useState(SNAKE_START);
@@ -102,18 +105,21 @@ function App() {
       tabIndex="0"
       onKeyDown={e => moveSnake(e)}
     >
-      <canvas
-        style={{ border: "1px solid black" }}
-        width={`${CANVAS_SIZE[0]}px`}
-        height={`${CANVAS_SIZE[1]}px`}
-        ref={canvasRef}
-      />
-      <button
-        onClick={startGame}
-      >
-        Start game
-      </button>
-      {gameOver && <div>Game Over</div>}
+      <Settings />
+      <div className='game_container'>
+        <canvas
+          className='gameboard'
+          width={`${CANVAS_SIZE[0]}px`}
+          height={`${CANVAS_SIZE[1]}px`}
+          ref={canvasRef}
+        />
+        <button
+          onClick={startGame}
+        >
+          Start game
+        </button>
+      </div>
+      <Score />
     </div>
   );
 }

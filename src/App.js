@@ -89,11 +89,19 @@ function App() {
     } else return false
   }
 
+  const checkSnakeCollision = (head, snk = snake) => {
+    for (const segment of snk) {
+      if (head[0] === segment[0] && head[1] === segment[1]) return true;
+    }
+    return false;
+  }
+
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake));
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
     snakeCopy.unshift(newSnakeHead);
     snakeCopy.pop();
+    if (checkSnakeCollision(newSnakeHead)) endGame()
     if (checkOutOfBounds(newSnakeHead)) endGame()
     setSnake(snakeCopy);
   };

@@ -56,13 +56,18 @@ function App() {
     }
   };
 
+  const endGame = () => {
+    setSpeed(null)
+    setGameOver(true)
+  }
+
   const checkOutOfBounds = (head) => {
     if(
       head[0] * SCALE >= CANVAS_SIZE[0] ||
       head[0] < 0 ||
       head[1] * SCALE >= CANVAS_SIZE[1] ||
       head[1] < 0
-    ) return console.log('outof bounds!')
+    ) {return true} else return false
 
   }
 
@@ -72,10 +77,12 @@ function App() {
     snakeCopy.unshift(newSnakeHead);
     snakeCopy.pop();
     checkFruitCollision()
-    checkOutOfBounds(newSnakeHead)
+    if (checkOutOfBounds(newSnakeHead)) endGame()
     setSnake(snakeCopy);
   };
 
+  
+  
   useInterval(() => gameLoop(), speed);
 
   useEffect(
@@ -90,6 +97,7 @@ function App() {
       // Sets cell to fruit
       context.fillStyle = "lightblue";
       context.fillRect(fruit[0], fruit[1], 1, 1);
+      console.log(snake[0])
     },
     [snake, fruit, gameOver]
   );

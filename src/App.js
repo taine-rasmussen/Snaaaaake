@@ -30,6 +30,32 @@ function App() {
     keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
   }
 
+  const checkFruitCollision = () => {
+    // Each time this func is called we need to check if head of the snake exists in the same cords as the fruit
+    // Add cell to end of snake on collision
+    // Create new fruit in random cell - checking not in same place as any part of the snake
+
+    const fruitPos = fruit.toString()
+    const snakePos = snake[0].toString()
+
+    if(snakePos == fruitPos){
+      const snakeCopy = JSON.parse(JSON.stringify(snake));
+      const newSnakeTail = [snakeCopy[snake.length - 1][0], snakeCopy[snake.length - 1][1] + 1]
+      snakeCopy.push(newSnakeTail)
+
+      console.log('Copy',snakeCopy, 'snake:', snake)
+      setSnake(snakeCopy)
+
+
+      //add cell to end of snake
+        // Knowing the current direction of the snake we can add to the correct end cell
+      //create new fruit
+      //return
+    }
+  };
+
+
+
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake));
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
@@ -45,6 +71,7 @@ function App() {
       const context = canvasRef.current.getContext("2d")
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
       //Clears whole canvas
+      checkFruitCollision()
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
       // Sets given cell colour to pink for n length of snake
       context.fillStyle = "pink";
@@ -55,8 +82,6 @@ function App() {
     },
     [snake, fruit, gameOver]
   );
-
-  console.log(snake)
 
   return (
     <div 

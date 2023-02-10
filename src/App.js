@@ -60,6 +60,9 @@ function App() {
   };
 
   const endGame = () => {
+    if(score.curr > score.high) score.high = score.curr
+    score.prev = score.curr
+    score.curr = 0
     setSpeed(null)
     setGameOver(true)
   }

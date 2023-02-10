@@ -1,5 +1,5 @@
 const CANVAS_SIZE = [800, 800];
-const SNAKE_START = [[8, 7], [8, 8]]
+const SNAKE_START = [[8, 17], [8, 18]]
 const FRUIT_START = [8, 3]
 const SCALE = 40;
 const DIRECTIONS = {

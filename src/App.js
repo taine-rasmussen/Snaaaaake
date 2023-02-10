@@ -20,6 +20,7 @@ function App() {
   const [dir, setDir] = useState([0, -1]);
   const [speed, setSpeed] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState({curr: 0, prev: 0, high: 0})
 
   const startGame = () => {
     setSnake(SNAKE_START);
@@ -54,6 +55,7 @@ function App() {
       snakeCopy.push(newSnakeTail)
       createNewFruit()
       setSnake(snakeCopy)
+      score.curr = score.curr + 10
     }
   };
 
@@ -119,7 +121,9 @@ function App() {
           Start game
         </button>
       </div>
-      <Score />
+      <Score
+        score={score}
+      />
     </div>
   );
 }

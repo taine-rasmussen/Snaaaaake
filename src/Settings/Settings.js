@@ -2,10 +2,14 @@ import './Settings.css'
 
 const Settings = (props) => {
   const {
-    setNewSpeed,
     newSpeed,
-    speed
+    setNewSpeed,
+    setSnakeColour,
+    setFruitColour
   } = props;
+
+  const allSnakeColours = ['#ff6400', '#4b6496', '#4bc696', '#e0d910', '#e237d6']
+  const allFruitColours = ['#000', '#ca37d6', '#113700', '#7c3700', '#7c37c2']
   
   const increaseSpeed = () => {
     const udpatedSpeed = newSpeed + 25
@@ -29,9 +33,36 @@ const Settings = (props) => {
               <button onClick={decreaseSpeed}>-</button>
             </div>
         </div>
-        speed
-        snake colour
-        fruit colour
+        <div 
+          className='colours_container' 
+          style={{borderBottom: '2px solid #000', padding: '20px 0px' }}>
+          <h4>Change Snake Colour</h4>
+        <div className='colour_container'>
+          {allSnakeColours.map(colour => {
+            return (
+              <div
+                key={colour}
+                className='colour_option'
+                style={{ backgroundColor: colour }}
+              />
+            )
+          })}
+        </div>
+        </div>
+        <div className='colours_container'>
+          <h4>Change Fruit Colour</h4>
+          <div className='colour_container'>
+            {allFruitColours.map(colour => {
+              return(
+                <div 
+                  key={colour}
+                  className='colour_option'
+                  style={{backgroundColor: colour}}
+                />
+              )
+            })}
+          </div>
+        </div>
     </div>
   )
 }

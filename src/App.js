@@ -22,6 +22,8 @@ function App() {
   const [newSpeed, setNewSpeed] = useState(125)
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState({curr: 0, prev: 0, high: 0})
+  const [snakeColour, setSnakeColour] = useState('#ff6400')
+  const [fruitColour, setFruitColour] = useState('#ff6496')
 
   const startGame = () => {
     setSnake(SNAKE_START);
@@ -42,7 +44,7 @@ function App() {
   const createNewFruit = () => {
     const newFruitLocation = [randomNum(),randomNum()]
     snake.map(cell => {
-      if (cell.toString() == newFruitLocation.toString()){
+      if (cell[0] == newFruitLocation[0] && cell[1] == newFruitLocation[1]){
         return createNewFruit()
       }
     })
@@ -96,9 +98,9 @@ function App() {
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
       checkFruitCollision()
-      context.fillStyle = "pink";
+      context.fillStyle = snakeColour;
       snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-      context.fillStyle = "lightblue";
+      context.fillStyle = fruitColour;
       context.fillRect(fruit[0], fruit[1], 1, 1);
     },
     [snake, fruit, gameOver]
@@ -112,9 +114,10 @@ function App() {
       onKeyDown={e => moveSnake(e)}
     >
       <Settings
-        speed={speed}
         newSpeed={newSpeed}
         setNewSpeed={setNewSpeed}
+        setSnakeColour={setSnakeColour}
+        setFruitColour={setFruitColour}
       />
       <div className='game_container'>
         <canvas

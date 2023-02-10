@@ -67,8 +67,9 @@ function App() {
       head[0] < 0 ||
       head[1] * SCALE >= CANVAS_SIZE[1] ||
       head[1] < 0
-    ) {return true} else return false
-
+    ) {
+      return true
+    } else return false
   }
 
   const gameLoop = () => {
@@ -89,12 +90,9 @@ function App() {
     () => {
       const context = canvasRef.current.getContext("2d")
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
-      //Clears whole canvas
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-      // Sets given cell colour to pink for n length of snake
       context.fillStyle = "pink";
       snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-      // Sets cell to fruit
       context.fillStyle = "lightblue";
       context.fillRect(fruit[0], fruit[1], 1, 1);
       console.log(snake[0])

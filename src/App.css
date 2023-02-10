@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 html {
   height: 100%;
   width: 100%;
 }
+
 body {
   min-height: 90%;
   min-width: 90%;
   padding: 0;
   margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 button{
@@ -20,6 +24,18 @@ button{
 
 button:hover{
   cursor: pointer;
+}
+
+li{
+  font-size: 1.5rem;
+  padding: 15px;
+  border-bottom: 1px solid #000;
+  width: max-content;
+}
+
+ul{
+    list-style-type: none;
+
 }
 
 .app_container{

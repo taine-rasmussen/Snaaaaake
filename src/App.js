@@ -10,8 +10,8 @@ import {
 } from './Constants'
 import './App.css';
 
-import Score from './Score'
-import Settings from './Settings'
+import Score from './Score/Score'
+import Settings from './Settings/Settings'
 
 function App() {
   const canvasRef = useRef();

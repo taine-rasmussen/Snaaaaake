@@ -103,7 +103,7 @@ function App() {
       context.fillStyle = fruitColour;
       context.fillRect(fruit[0], fruit[1], 1, 1);
     },
-    [snake, fruit, gameOver]
+    [snake, fruit, gameOver, snakeColour, fruitColour]
   );
 
   return (

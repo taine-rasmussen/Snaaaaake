@@ -44,6 +44,7 @@ const Settings = (props) => {
                 key={colour}
                 className='colour_option'
                 style={{ backgroundColor: colour }}
+                onClick={() => { setSnakeColour(colour) }}
               />
             )
           })}
@@ -58,6 +59,7 @@ const Settings = (props) => {
                   key={colour}
                   className='colour_option'
                   style={{backgroundColor: colour}}
+                  onClick={() => {setFruitColour(colour)}}
                 />
               )
             })}

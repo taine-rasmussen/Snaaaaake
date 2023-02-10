@@ -1,3 +1,4 @@
+import './Score.css'
 
 const Score = (props) => {
   const {
@@ -10,15 +11,17 @@ const Score = (props) => {
 
   return (
     <div className='score_container'>
-      <div>
-        <h3>High score: {high}</h3>
-      </div>
-      <div>
-        <h3>Current score: {curr}</h3>
-      </div>
-      <div>
-        <h3>Previous score: {prev}</h3>
-      </div>
+      <ul>
+        <li>
+          High score: {high}
+        </li>
+        <li>
+          Current score: {curr}
+        </li>
+        <li>
+          Previous score: {prev}
+        </li>
+      </ul>
     </div>
   )
 }

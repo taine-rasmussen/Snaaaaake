@@ -30,11 +30,16 @@ function App() {
     keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
   }
 
-  const checkFruitCollision = () => {
-    // Each time this func is called we need to check if head of the snake exists in the same cords as the fruit
-    // Add cell to end of snake on collision
-    // Create new fruit in random cell - checking not in same place as any part of the snake
+  const randomNum = () => {
+    return Math.floor(Math.random() * (19 - 0 + 1) + 0)
+  }
 
+  const createNewFruit = () => {
+    const newFruitLocation = [randomNum(),randomNum()]
+    setFruit(newFruitLocation)
+  }
+
+  const checkFruitCollision = () => {
     const fruitPos = fruit.toString()
     const snakePos = snake[0].toString()
 
@@ -45,6 +50,7 @@ function App() {
 
       console.log('Copy',snakeCopy, 'snake:', snake)
       setSnake(snakeCopy)
+      createNewFruit()
 
 
       //add cell to end of snake
@@ -79,6 +85,7 @@ function App() {
       // Sets cell to fruit
       context.fillStyle = "lightblue";
       context.fillRect(fruit[0], fruit[1], 1, 1);
+      console.log(snake[0])
     },
     [snake, fruit, gameOver]
   );

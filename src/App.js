@@ -33,7 +33,15 @@ function App() {
     setGameOver(false);
   };
 
+  const oppositeDirections = {
+    38: [0, 1],
+    40: [0, -1],
+    37: [1, 0],
+    39: [-1, 0]
+  }
+
   const moveSnake = ({ keyCode }) => {
+    if (oppositeDirections[keyCode][0] == dir[0] && oppositeDirections[keyCode][1] == dir[1]) return
     keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
   }
 

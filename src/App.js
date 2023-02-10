@@ -47,12 +47,12 @@ function App() {
   const checkFruitCollision = () => {
     const fruitPos = fruit.toString()
     const snakePos = snake[0].toString()
-    if(snakePos == fruitPos){
+    if(snakePos == fruitPos){ 
       const snakeCopy = JSON.parse(JSON.stringify(snake));
       const newSnakeTail = [snakeCopy[snake.length - 1][0], snakeCopy[snake.length - 1][1] + 1]
       snakeCopy.push(newSnakeTail)
-      setSnake(snakeCopy)
       createNewFruit()
+      setSnake(snakeCopy)
     }
   };
 
@@ -77,13 +77,10 @@ function App() {
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
     snakeCopy.unshift(newSnakeHead);
     snakeCopy.pop();
-    checkFruitCollision()
     if (checkOutOfBounds(newSnakeHead)) endGame()
     setSnake(snakeCopy);
   };
 
-  
-  
   useInterval(() => gameLoop(), speed);
 
   useEffect(
@@ -91,11 +88,12 @@ function App() {
       const context = canvasRef.current.getContext("2d")
       context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
       context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      checkFruitCollision()
       context.fillStyle = "pink";
       snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
       context.fillStyle = "lightblue";
       context.fillRect(fruit[0], fruit[1], 1, 1);
-      console.log(snake[0])
+      console.log(snake)
     },
     [snake, fruit, gameOver]
   );

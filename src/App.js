@@ -36,7 +36,12 @@ function App() {
 
   const createNewFruit = () => {
     const newFruitLocation = [randomNum(),randomNum()]
-    setFruit(newFruitLocation)
+    snake.map(cell => {
+      if (cell.toString() == newFruitLocation.toString()){
+        return createNewFruit()
+      }
+    })
+    return setFruit(newFruitLocation)
   }
 
   const checkFruitCollision = () => {
@@ -85,7 +90,6 @@ function App() {
       // Sets cell to fruit
       context.fillStyle = "lightblue";
       context.fillRect(fruit[0], fruit[1], 1, 1);
-      console.log(snake[0])
     },
     [snake, fruit, gameOver]
   );
